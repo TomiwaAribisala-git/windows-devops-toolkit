@@ -33,10 +33,11 @@ Reference [here](https://learn.microsoft.com/en-us/windows/terminal/install), in
 Start a Windows Terminal, open a Ubuntu tab.
 
 Check if git is installed:
-![WSL Image](wsl-images/wsl1.PNG)
+
 ```
   git --version
 ```
+![WSL Image](wsl-images/wsl1.PNG)
 
 Otherwise, install git:
 ```
@@ -47,7 +48,7 @@ Otherwise, install git:
 ```
 
 To view your Windows files/directories, go to your root directory(/), then your Windows Users directory mounted on WSL:
-![WSL Image](wsl-images/wsl2.PNG)
+
 ```
   cd ..
   cd ..
@@ -55,6 +56,7 @@ To view your Windows files/directories, go to your root directory(/), then your 
   cd mnt/c/Users/
   ls
 ```
+![WSL Image](wsl-images/wsl2.PNG)
 
 # Run Package
 
