@@ -22,7 +22,7 @@ The "wsl --install" defaultly install the Ubuntu distribution of Linux.
 ```
   wsl -l -v 
 ```
-Check the version installed--should be WSL2, if you are on WSL1, upgrade to WSL2--reference [here](https://dev.to/adityakanekar/upgrading-from-wsl1-to-wsl2-1fl9)
+Check the version installed--should be WSL2, if you are on WSL1, upgrade to WSL2--reference [here](https://dev.to/adityakanekar/upgrading-from-wsl1-to-wsl2-1fl9).
 
 # Install Windows Terminal 
 
@@ -30,9 +30,10 @@ Reference [here](https://learn.microsoft.com/en-us/windows/terminal/install), in
 
 # Run Toolkit on WSL
 
-Start a Windows Terminal, start a Ubuntu tab. [picture]
+Start a Windows Terminal, open a Ubuntu tab.
 
-Check if git is installed: [picture]
+Check if git is installed:
+<img src="/images/ws1" width="500px">
 ```
   git --version
 ```
@@ -46,12 +47,13 @@ Otherwise, install git:
 ```
 
 To view your Windows files/directories, go to your root directory(/), then your Windows Users directory mounted on WSL:
+<img src="/images/ws2" width="500px">
 ```
   cd ..
   cd ..
-  ls -l
+  ls
   cd mnt/c/Users/
-  ls -l 
+  ls
 ```
 
 # Run Package
