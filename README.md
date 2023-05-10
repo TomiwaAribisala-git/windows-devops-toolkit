@@ -81,3 +81,7 @@ Run Script
 # Toolkit Interface
 
 ![WSL Image](wsl-images/wsl3.PNG)
+
+# Credits 
+
+Big thanks to [Great](https://github.com/umegbewe) his [Devops-toolkit](https://github.com/umegbewe/devops-toolkit) projected this idea. 
