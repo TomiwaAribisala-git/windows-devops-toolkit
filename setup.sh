@@ -81,8 +81,9 @@ menu() {
 		${RED}[${WHITE}05${RED}]${ORANGE} Kubectl	   ${RED}[${WHITE}12${RED}]${ORANGE} Github Cli 	${RED}[${WHITE}19${RED}]${ORANGE} Kubeadm
 		${RED}[${WHITE}06${RED}]${ORANGE} Minikube      ${RED}[${WHITE}13${RED}]${ORANGE} Packer		${RED}[${WHITE}20${RED}]${ORANGE} Kubelet
 		${RED}[${WHITE}07${RED}]${ORANGE} Kind	   ${RED}[${WHITE}14${RED}]${ORANGE} Waypoint	${RED}[${WHITE}21${RED}]${ORANGE} Krew
-		
-		${RED}[${WHITE}q${RED}]${ORANGE} Exit
+		${RED}[${WHITE}22${RED}]${ORANGE} Kubectx       ${RED}[${WHITE}23${RED}]${ORANGE} Python3
+
+		${RED}[${WHITE}q${RED}]${ORANGE} Exit      		
 
 		EOF
 		
@@ -129,6 +130,10 @@ menu() {
 			kubelet version && echo ${RED} "Kubelet already installed" && sleep 2 && menu || kubeletin
 		elif [[ "$REPLY" == 21 || "$REPLY" == 021 ]]; then
 			kubectl krew version | sed '2q;d' && echo ${RED} "Krew already installed" && sleep 2 && menu || krewin
+		elif [[ "$REPLY" == 22 || "$REPLY" == 022 ]]; then
+			kubectx && echo ${RED} "Kubectx already installed" && sleep 2 && menu || kubectxin
+		elif [[ "$REPLY" == 23 || "$REPLY" == 023 ]]; then
+			python3 --version && echo ${RED} "Python3 already installed" && sleep 2 && menu || python3in
 		elif [[ "$REPLY" == q ]]; then
 			clear && exit
 		else
@@ -288,9 +293,6 @@ function kubeletin {
 	echo -e "\n${RED}[${WHITE}!${RED}]${RED} Unsupported package manager" && sleep 2 && menu;
 	fi
 }
-
-
-
 
 function kubectlin {
 	if [[ `cat /etc/os-release | grep 'Ubuntu\|ID_LIKE=ubuntu\|Debian\|ID_LIKE=debian'` ]]; then
@@ -604,6 +606,35 @@ function terragruntin {
 	fi
 }
 
+function kubectxin {
+	if [[ `cat /etc/os-release | grep 'Ubuntu\|ID_LIKE=ubuntu\|Debian\|ID_LIKE=debian'` ]]; then
+	echo -e "\n${GREEN}[${WHITE}+${GREENS}]${GREENS} Ubuntu/Debian based detected installing Kubectx.........."
+	sudo apt update && sudo apt upgrade -y && \
+	sudo git clone https://github.com/ahmetb/kubectx /usr/local/kubectx && \
+	sudo ln -s /usr/local/kubectx/kubectx /usr/local/bin/kubectx && \
+	sudo ln -s /usr/local/kubectx/kubens /usr/local/bin/kubens && \ 
+	echo ${RED} "Kubectx installed!!!"
+	sleep 3
+	menu
+	else
+	echo -e "\n${RED}[${WHITE}!${RED}]${RED} Unsupported operating system" && sleep 2 && menu;
+	fi
+}
+
+function python3in {
+	if [[ `cat /etc/os-release | grep 'Ubuntu\|ID_LIKE=ubuntu\|Debian\|ID_LIKE=debian'` ]]; then
+	echo -e "\n${GREEN}[${WHITE}+${GREENS}]${GREENS} Ubuntu/Debian based detected installing Python3.........."
+	sudo apt update && sudo apt upgrade -y && \
+	sudo apt install software-common-properties && \
+	sudo add-apt-repository ppa:deadsnakes/ppa && sudo apt update -y && \
+	sudo apt install python3.11 && \ 
+	echo ${RED} "Python3 installed!!!"
+	sleep 3
+	menu
+	else
+	echo -e "\n${RED}[${WHITE}!${RED}]${RED} Unsupported operating system" && sleep 2 && menu;
+	fi
+}
 
 header
 #update
