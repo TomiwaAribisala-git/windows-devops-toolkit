@@ -333,7 +333,7 @@ function minikubein {
 	if [[ `cat /etc/os-release | grep 'Ubuntu\|ID_LIKE=ubuntu\|Debian\|ID_LIKE=debian'` ]]; then
 	echo -e "\n${GREEN}[${WHITE}+${GREENS}]${GREENS} Ubuntu/Debian based detected installing Minikube.........."
 	sleep 1
-	curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+	sudo curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb && \
 	sudo dpkg -i minikube_latest_amd64.deb && echo ${RED} "Minikube installed!!!"
 	sleep 3
 	menu
@@ -346,7 +346,7 @@ function kindin {
 	if [[ `uname -a | grep "Linux"` ]]; then
 	echo -e "\n${GREEN}[${WHITE}+${GREENS}]${GREENS} Linux detected installing Kind.........."
 	sleep 1
-	curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64 && \
+	sudo curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.11.1/kind-linux-amd64 && \
 	sudo chmod +x ./kind && \
 	sudo mv ./kind /usr/bin/kind && echo ${RED} "Kind installed!!!"
 	sleep 3
@@ -359,7 +359,7 @@ function kindin {
 function awsclin {
 	if [[ `uname -a | grep "Linux"` ]]; then
 	echo -e "\n${GREEN}[${WHITE}+${GREENS}]${GREENS} Linux OS detected installing AWS Cli.........."
-	curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip" && \
+	sudo curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip" && \
 	sudo apt-get install unzip && \
 	unzip awscliv2.zip && \
 	sudo ./aws/install && echo ${RED} "AWS CLI installed!!!"
@@ -526,8 +526,9 @@ function nomadin {
 function ngrokin {
 	if [[ `uname -a | grep "Linux"` ]]; then
 	echo -e "\n${GREEN}[${WHITE}+${GREENS}]${GREENS} Linux OS detected installing Ngrok.........."
-	sudo apt-get install unzip && wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -o ngrok.zip && \
-	unzip ngrok.zip && \
+	cd / && \
+	sudo apt-get install unzip && sudo wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip && \
+	sudo unzip ngrok-stable-linux-amd64.zip && \
 	sudo mv ./ngrok /usr/bin/ngrok && echo ${RED} "Ngrok installed!!!"
 	sleep 3
 	menu
